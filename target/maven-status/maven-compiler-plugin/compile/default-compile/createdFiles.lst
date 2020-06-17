@@ -1,0 +1,16 @@
+br/com/springboot/model/Telefone.class
+br/com/springboot/securiy/ImplementacaoUserDetailService.class
+br/com/springboot/model/Profissao.class
+br/com/springboot/model/Usuario.class
+br/com/springboot/repository/UsuarioRepository.class
+br/com/springboot/repository/PessoaRepository.class
+br/com/springboot/controller/PessoaController.class
+br/com/springboot/securiy/WebConfigSecurity.class
+br/com/springboot/controller/ReportUtil.class
+br/com/springboot/SpringbootApplication.class
+br/com/springboot/repository/ProfissaoRepository.class
+br/com/springboot/IndexController.class
+br/com/springboot/model/Cargo.class
+br/com/springboot/model/Pessoa.class
+br/com/springboot/repository/TelefoneRepository.class
+br/com/springboot/model/Role.class

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Telefones</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<style type="text/css">
+table.striped>tbody>tr:nth-child(odd) {
+	background-color: rgba(158, 154, 154, 0.5);
+}
+</style>
+</head>
+<body>
+	<nav class="#3949ab indigo darken-1">
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo">Implementanto Telefones</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="#">Sass</a></li>
+
+			</ul>
+		</div>
+	</nav>
+
+	<div th:each="m : ${msgs}">
+		<span th:text="${m}"></span>
+	</div>
+
+	<div class="row" style="margin-top: 10px; margin-left: 10px;">
+
+		<a href="/cadastropessoa" class="btn waves-effect waves-light">
+			Cad. Pessoa</a>
+	</div>
+	<div th:each="p : ${pessoaobj}">
+		<div class="row">
+			<p>
+				ID: <span th:text="${p.id}"></span>
+			</p>
+			<p>
+				Nome: <span th:text="${p.nome}"></span>
+			</p>
+			<p>
+				Sobrenome: <span th:text="${p.sobrenome}"></span>
+			</p>
+			<p>
+				Idade: <span th:text="${p.idade}"></span>
+			</p>
+		</div>
+	</div>
+
+	<form
+		th:action="@{/cadastrotelefone/{pessoaid}(pessoaid=${pessoaobj.id})}"
+		method="post" id="formtelefone">
+		<div class="row">
+			<div class="input-field col s4">
+				<input id="Id" type="text" name="id" class="validate"
+					readonly="readonly"> <label for="Id">Id</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+				<i class="material-icons prefix">phone</i> <input
+					id="icon_telephone" type="tel" class="validate" name="numero">
+				<label for="icon_telephone">Telefone</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field col s4">
+				<input id="tipoId" type="text" name="tipo" class="validate">
+				<label for="tipoId">Tipo</label>
+			</div>
+		</div>
+
+
+		<div class="row" style="margin-left: 10px;">
+			<button class="btn waves-effect waves-light" type="submit">
+				Salvar <i class="material-icons right">send</i>
+			</button>
+
+			<button class="btn waves-effect waves-light" type="submit"
+				onclick="document.getElementById('formtelefone').reset()">
+				Novo <i class="material-icons right">fiber_new</i>
+			</button>
+		</div>
+	</form>
+
+	<table class="striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Nome</th>
+				<th>Número</th>
+				<th>tipo</th>
+				<th>Action</th>
+
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="telefone : ${telefones}">
+				<td th:text="${telefone.id}"></td>
+				<td th:text="${telefone.pessoa.nome}"></td>
+				<td th:text="${telefone.numero}"></td>
+				<td th:text="${telefone.tipo}"></td>
+				<td><a
+					th:href="@{/deletetelefone/{idtelefone} (idtelefone = ${telefone.id})}"
+					class="btn-floating btn-large waves-effect waves-light red"
+					title="Remover"><i class="material-icons">delete</i></a></td>
+
+			</tr>
+		</tbody>
+	</table>
+
+
+
+	<!-- Compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</body>
+</html>
